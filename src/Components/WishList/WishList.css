@@ -1,0 +1,97 @@
+
+
+.ContainerTable{
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ContainerTable h1{
+    padding: 1rem;
+    padding-bottom: 3rem;
+    font-size: 3rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(122, 122, 122);
+}
+.ContainerTable table{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+thead{
+    font-size: 2rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: darkgray;
+    border-bottom: thin solid;
+}
+
+tbody{
+    font-size: 2rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: darkgray;
+
+}
+td img {
+    width: 8rem;
+}
+
+th, td{
+    /* text-align: center; */
+    border-bottom: thin solid;
+} 
+
+
+.atras{
+    font-size: 2rem;
+    text-decoration: none;
+    text-align: center;
+    color: black;
+    position: absolute;
+    left: 5rem;
+    border: thin solid;
+    border-radius: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+
+}
+
+.tableIcon{
+    font-size: 2rem;
+   border: none;
+   
+
+}
+.buttonTable{
+    background-color: transparent;
+    margin-right: 4rem;
+    cursor: pointer;
+    border: none;
+
+}
+.buttonTable :hover{
+    color: yellow;
+
+}
+.h1Tabla{
+    background-color: rgb(248, 248, 136);
+    border-radius: 1rem;
+}
+.linkWishList{
+    text-decoration: none;
+    color: black;
+    margin-right: 6rem;
+}
+.linkWishList:hover{
+    color:yellow;
+   
+}
+.tableIcon:hover{
+    color:yellow;
+   
+    transform: translateX(1rem);
+    transition: all 500ms;
+}
