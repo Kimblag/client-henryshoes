@@ -78,7 +78,7 @@ const UserAccount = () => {
         name: input.name || userInfo.name,
         lastname: input.lastname || userInfo.lastname,
         address: input.address || userInfo.address,
-        password: bcryptjs.hashSync(input.passwordConfirm || userInfo.passwordConfirm, 10),
+        password: input.passwordConfirm ? bcryptjs.hashSync(input?.passwordConfirm, 10) : userInfo.password,
       };
       const response = await axios({
         method: "put",
