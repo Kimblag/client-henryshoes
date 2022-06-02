@@ -173,6 +173,7 @@ setIdSend(e.target.value )
                               key={order.productId}
                               style={{ textDecoration: "none", color: "black" }}
                               to={`/details/${order.productId}`}
+                              onClick={() => dispatch(getProductById(order.productId))}
                             >
                               {img.model}
                             </Link>
