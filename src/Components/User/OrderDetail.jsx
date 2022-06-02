@@ -11,11 +11,14 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllProducts } from "../../redux/actions";
+import { getAllProducts, getAllRewies } from "../../redux/actions";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import { Link } from "react-router-dom";
 import { BackBtn } from "../../styles/Details";
+import ReviewUser from "./ReviewUser";
+import SeeReview from "./SeeReview";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,6 +39,13 @@ const OrderDetail = () => {
   const classes = useStyles();
   const products = useSelector((state) => state.products);
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState(false);
+  const [idSend, setIdSend] = useState ("")
+  const stateReview = useSelector((state)=> state. All_Review)
+  
+  const stateModifyReview = useSelector((state)=> state. postMsjReview)
+
+console.log(stateReview)
   const dispatch = useDispatch();
 
   const getOrders = async () => {
@@ -53,6 +63,27 @@ const OrderDetail = () => {
     getOrders();
     dispatch(getAllProducts());
   }, [dispatch]);
+
+  useEffect (()=>{
+  if (idSend){ 
+    dispatch(getAllRewies(idSend))
+  }
+    },[idSend]);
+    
+    useEffect(() => {
+      getOrders();
+      dispatch(getAllProducts())
+      dispatch(getAllRewies(idSend));
+    }, [stateModifyReview]);
+
+
+
+
+  function abrirComponente(e){
+setOpen(!open)
+setIdSend(e.target.value )
+  }
+
 
   var id = 1;
   return (
@@ -175,14 +206,27 @@ const OrderDetail = () => {
                       ></ListItemText>
                       <br />
                     </ListItem>
+                    <button  value={order.productId}  onClick={(e)=>abrirComponente(e)}>Comment on the product</button>
+
+                   { (open && stateReview?.data?.length === 0 ) &&<ReviewUser email={item.email} producId={order.productId}   />
+            }
+                   
+                { (open && stateReview?.data?.length !== 0 ) &&   <SeeReview    email={item.email} producId={order.productId}  id ={item.id}        />
+            }
+                     
+
                     <Divider />
                   </List>
                 ))}
               </main>
+              
             ) : null
           )}
+
         </Paper>
+
       </div>
+
       <Footer />
     </>
   );

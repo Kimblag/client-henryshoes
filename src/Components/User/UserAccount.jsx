@@ -94,7 +94,7 @@ const UserAccount = () => {
       document.getElementById("passwordConfirm").value = "";
       toast(response.data.message);
     } catch (err) {
-      console.error(err);
+      toast.error(err);
     }
   };
   const showPassword = () => {

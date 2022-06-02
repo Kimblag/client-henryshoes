@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import {
   getProductById,
   addShoppingCart,
   // combineStateCart,
   getShoppingCart,
+  getAllRewies,
 } from "../redux/actions/index";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -26,18 +28,24 @@ import Modal from "./Modal/Modal";
 import { useModal } from "./Modal/hooks/useModal";
 import Footer from "./Footer";
 
+
 const Details = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [number, setNumber] = useState(3);
+
+
   const params = useParams();
   let addres = params.id;
   const detail = useSelector((state) => state.details);
   const userInfo = useSelector((state) => state.userInfo);
   const cartDetail1 = useSelector((state) => state.shoppingCart);
+  const stateReview = useSelector((state)=> state. All_Review)
   // console.log(cartDetail1)
   // const cartDetailRegisterUser = useSelector(
   //   (state) => state.shoppingCartUserRegister
   // );
+  console.log("infoReview",stateReview)
 
   const [isOpenCart, openCart, closeCart] = useModal(false);
 
@@ -71,6 +79,14 @@ const Details = () => {
       // model: product.model,
     });
   }, [product]); //  eslint-disable-line react-hooks/exhaustive-deps
+
+useEffect (()=>{
+  
+dispatch(getAllRewies(addres))
+  
+
+},[])
+
 
 //   useEffect(() => {
 //     if (userInfo && cartDetail1) {
@@ -172,17 +188,34 @@ const Details = () => {
 
   // let talles = [35, 36, 37, 38, 39, 40, 41, 42, 43];
 
+  
 
   return (
     <DetailContainer>
       <NavBar />
-
+      <div className="DivfijoStart">
+            {Array(5)
+              .fill()
+              .map((_, index) =>
+                number >= index + 1 ? (
+                  <AiFillStar
+                    style={{ color: "orange" }}
+                    // onClick={() => setNumber(1)}
+                  />
+                ) : (
+                  <AiOutlineStar
+                    style={{ color: "orange" }}
+                    // onClick={() => setNumber(1)}
+                  />
+                )
+              )}
+          </div>
       <BackBtn
         onClick={() => {
           navigate(-1);
         }}
       ></BackBtn>
-
+  
       <ContentDiv>
         <Content2>
           <h3>Model:</h3>
@@ -207,8 +240,11 @@ const Details = () => {
           <SizeDiv>
           <h3>Gender:</h3>
           <h2> {detail.gender}</h2>
+          </SizeDiv>
+
+          <SizeDiv>
           {detail.CategName?.length > 0 ? <h3>Category:</h3> : null}
-          {detail.CategName?.length > 0 ? <p>{detail.CategName}</p> : null}
+          {detail.CategName?.length > 0 ? <h2>{detail.CategName}</h2> : null}
           </SizeDiv>
           <SizeDiv>
             <h3>Sizes: </h3>
@@ -237,22 +273,25 @@ const Details = () => {
             </StockSelect>
           </StockDiv> */}
           <h4>Description : {detail.description}</h4>
+
         </Content2>
         <Content1>
           <img src={detail.image} alt="img zapa" />
+          
         </Content1>
-        
+       
       </ContentDiv>
       <BtnDiv>
-        <AddBtn onClick={(e) => CargarCarrito(e)}>
+        <AddBtn onClick={(e) => CargarCarrito(e)} >
           <h4>Add to Shopping Cart</h4>
         </AddBtn>
       </BtnDiv>
-
+    
       <Modal isOpen={isOpenCart} closeModal={closeCart}>
         <CartDetails closeCart={closeCart} />
       </Modal>
       <Footer/>
+
 
     </DetailContainer>
   );
