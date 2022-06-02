@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllProducts, getAllRewies, getEmailReview} from "../../redux/actions";
+import { getAllProducts, getAllRewies, getEmailReview, getProductById} from "../../redux/actions";
 import NavBar from "../NavBar";
 import Footer from "../Footer";
 import { Link } from "react-router-dom";
