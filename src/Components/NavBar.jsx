@@ -110,22 +110,22 @@ export default function NavBar() {
                   </DropdownToggle>
 
                   <DropdownMenu>
-                    <DropdownItem>
                       <Link
                         to="/profile"
                         style={{ textDecoration: "none", color: "black" }}
                       >
-                        Profile
-                      </Link>
-                    </DropdownItem>
                     <DropdownItem>
+                        Profile
+                    </DropdownItem>
+                      </Link>
                       <Link
                         to="/wish-list"
                         style={{ textDecoration: "none", color: "black" }}
                       >
+                    <DropdownItem>
                         Wish List <FontAwesomeIcon icon={faHeart} />
-                      </Link>
                     </DropdownItem>
+                      </Link>
                     <DropdownItem onClick={signOutHandler}>Logout</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>

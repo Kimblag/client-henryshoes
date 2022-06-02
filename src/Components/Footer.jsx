@@ -89,13 +89,13 @@ const Footer = () => {
           <Grid item>
             <Typography variant="h6">HenryShoes</Typography>
             <ul className={classes.list}>
-              <Typography
+              {/* <Typography
                 className={classes.text}
                 component={Link}
                 to={"/rutadelrobot"}
               >
                 HenryShoes Assistance
-              </Typography>
+              </Typography> */}
               <Typography>Payment terms</Typography>
               <Typography
                 className={classes.text}

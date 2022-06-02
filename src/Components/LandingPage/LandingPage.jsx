@@ -55,13 +55,6 @@ const LandingPage = () => {
   return (
     <LandingDiv>
       <NavBar />
-      <AdminDiv>
-        {userInfo && userInfo?.roleId === 1 && (
-          <button>
-            <Link to="/CreateProduct" > Create Product </Link>{" "}
-          </button>
-        )}
-      </AdminDiv>
         <SliderDiv>
           <Slider />
         </SliderDiv>
