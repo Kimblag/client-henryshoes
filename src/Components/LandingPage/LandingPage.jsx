@@ -56,11 +56,11 @@ const LandingPage = () => {
     <LandingDiv>
       <NavBar />
       <AdminDiv>
-        {/* {userInfo && userInfo?.roleId === 1 && (
+        {userInfo && userInfo?.roleId === 1 && (
           <button>
             <Link to="/CreateProduct" > Create Product </Link>{" "}
           </button>
-        )} */}
+        )}
       </AdminDiv>
         <SliderDiv>
           <Slider />
